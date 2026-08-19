@@ -90,3 +90,25 @@ button:hover {
     border-radius: 5px;
     margin-bottom: 2px;
 }
+
+#suggestions {
+    margin-top: 5px;
+}
+
+.suggestion-title {
+    font-size: 13px;
+    margin: 5px 0;
+}
+
+.suggestion {
+    font-size: 13px;
+    padding: 6px 10px;
+    cursor: pointer;
+    background: #eeeaf8;
+    border-radius: 5px;
+    margin-bottom: 3px;
+}
+
+.suggestion:hover {
+    opacity: 0.8;
+}
