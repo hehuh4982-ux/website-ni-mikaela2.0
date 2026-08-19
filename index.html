@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Para sa aking broski, Mikaela</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="dictionary">
+
+        <h1>Get to know Marianne Mikaela</h1>
+
+        <p style="text-align: center;">
+            Ask away, and your questions will be answered!
+            If you know her well, feel free to add a question
+            that others might ask about her—especially if you
+            already know the answer.
+        </p>
+
+
+  
+
+        <div class="search-box">
+
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Search a question..."
+                oninput="showSuggestions()"
+            >
+
+            <button onclick="searchWord()">
+                Search
+            </button>
+
+        </div>
+
+
+        
+
+        <div id="suggestions"></div>
+
+
+        <div id="result">
+            All about her
+        </div>
+
+
+        <hr>
+
+
+
+        <h2>Add Question</h2>
+
+        <input
+            type="text"
+            id="wordInput"
+            placeholder="Enter question"
+        >
+
+        <input
+            type="text"
+            id="definitionInput"
+            placeholder="Enter answer"
+        >
+
+        <button onclick="addWord()">
+            Add Question
+        </button>
+
+
+        <img src="Bluey.png" class="sticker sticker1">
+
+        <img src="bluey2.png" class="sticker sticker2">
+
+    </div>
+
+
+
+    <script type="module" src="script.js"></script>
+
+</body>
+</html>
