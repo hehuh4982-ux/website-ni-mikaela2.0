@@ -263,6 +263,75 @@ async function addWord() {
     }
 }
 
+function showSuggestions() {
+
+    const input =
+        document.getElementById("searchInput");
+
+    const suggestions =
+        document.getElementById("suggestions");
+
+    const search =
+        input.value
+            .toLowerCase()
+            .trim();
+
+    suggestions.innerHTML = "";
+
+    if (search === "") {
+        return;
+    }
+
+    const matches = [];
+
+    for (const question in dictionary) {
+
+        const cleanQuestion =
+            question
+                .toLowerCase()
+                .replace(/[?.!,]/g, "");
+
+        if (cleanQuestion.includes(search)) {
+
+            matches.push(question);
+
+        }
+    }
+
+    if (matches.length === 0) {
+        return;
+    }
+
+    suggestions.innerHTML =
+        "<p class='suggestion-title'>Possible questions:</p>";
+
+    matches.slice(0, 5).forEach(question => {
+
+        const suggestion =
+            document.createElement("div");
+
+        suggestion.className =
+            "suggestion";
+
+        suggestion.textContent =
+            question;
+
+        suggestion.onclick = function () {
+
+            input.value = question;
+
+            suggestions.innerHTML = "";
+
+            searchWord();
+        };
+
+        suggestions.appendChild(
+            suggestion
+        );
+
+    });
+}
+
 
 
 window.searchWord = searchWord;
