@@ -9,6 +9,7 @@ import {
 
 
 
+
 const firebaseConfig = {
     apiKey: "AIzaSyD9YeKvdZ01ZdT4VfyUGvEOnYzf4y9FP14",
     authDomain: "mikaela-dictionary.firebaseapp.com",
@@ -20,7 +21,7 @@ const firebaseConfig = {
 };
 
 
-// Initialize Firebase
+
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
@@ -36,16 +37,14 @@ async function loadQuestions() {
 
     try {
 
-        const querySnapshot =
+        const snapshot =
             await getDocs(
                 collection(db, "questions")
             );
 
-
         dictionary = {};
 
-
-        querySnapshot.forEach((doc) => {
+        snapshot.forEach((doc) => {
 
             const data = doc.data();
 
@@ -58,12 +57,7 @@ async function loadQuestions() {
 
         });
 
-
-        console.log(
-            "Dictionary loaded:",
-            dictionary
-        );
-
+        console.log("Dictionary loaded:", dictionary);
 
     } catch (error) {
 
@@ -72,15 +66,11 @@ async function loadQuestions() {
             error
         );
 
-
         document.getElementById("result").innerHTML =
-            "<p class='error-message'>" +
-            "Could not load questions." +
-            "</p>";
+            "Could not load questions.";
 
     }
 }
-
 
 
 
@@ -92,7 +82,6 @@ function searchWord() {
 
     const result =
         document.getElementById("result");
-
 
     const search =
         searchInput.value
@@ -114,7 +103,6 @@ function searchWord() {
     let foundAnswer = null;
 
 
-  
     for (const question in dictionary) {
 
         const cleanQuestion =
@@ -132,7 +120,7 @@ function searchWord() {
         }
 
 
-        
+       
         if (cleanQuestion.includes(search)) {
 
             foundQuestion = question;
@@ -142,13 +130,12 @@ function searchWord() {
         }
 
 
-       
+      
         const searchWords =
             search.split(/\s+/);
 
         const questionWords =
             cleanQuestion.split(/\s+/);
-
 
         const allWordsFound =
             searchWords.every(word =>
@@ -203,7 +190,6 @@ async function addWord() {
             .trim()
             .replace(/[?.!,]/g, "");
 
-
     const definition =
         definitionInput.value.trim();
 
@@ -219,7 +205,6 @@ async function addWord() {
     }
 
 
-    
     result.innerHTML =
         "<p class='saving-message'>" +
         "Saving question..." +
@@ -228,7 +213,6 @@ async function addWord() {
 
     try {
 
-       
         const docRef =
             await addDoc(
                 collection(db, "questions"),
@@ -240,7 +224,6 @@ async function addWord() {
             );
 
 
-       
         dictionary[word] =
             definition;
 
@@ -257,7 +240,6 @@ async function addWord() {
             "</p>";
 
 
-       
         wordInput.value = "";
         definitionInput.value = "";
 
@@ -283,9 +265,9 @@ async function addWord() {
 
 
 
-
 window.searchWord = searchWord;
 window.addWord = addWord;
+
 
 
 
