@@ -336,6 +336,7 @@ function showSuggestions() {
 
 window.searchWord = searchWord;
 window.addWord = addWord;
+window.showSuggestions = showSuggestions;
 
 
 
